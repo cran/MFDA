@@ -51,9 +51,7 @@ Estep.tk(x, old, nclust)
 \seealso{
   \code{\link{Estep.tik}}
 }
-\examples{
 
-}
 \keyword{cluster}
 % docclass is function
 

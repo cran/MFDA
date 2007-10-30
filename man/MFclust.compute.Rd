@@ -63,8 +63,6 @@ MFclust.compute(data, minG, maxG, nchain,thres,iter.max,my.alpha, \dots)
 \seealso{
   \code{\link{MFclust}}
 }
-\examples{
 
-}
 \keyword{cluster}
 

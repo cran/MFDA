@@ -38,8 +38,5 @@ em.bic(likelihood, trc, n, m)
 \seealso{
   \code{\link{em.clust}}.
 }
-\examples{
 
-
-}
 \keyword{cluster}

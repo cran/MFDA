@@ -59,7 +59,6 @@ compute.M.all(x, weight, my.label)
 \seealso{
   \code{\link{Estep.tk}}
 }
-\examples{
-}
+
 \keyword{cluster}
 % docclass is function

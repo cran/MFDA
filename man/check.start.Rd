@@ -22,9 +22,5 @@ check.start(clust)
    A data-driven clustering method for time course gene expression data,  
    Nucleic Acids Research, 34 (4), 1261-1269. 
 }
-\seealso{
-...
-}
-\examples{
-}
+
 \keyword{cluster}

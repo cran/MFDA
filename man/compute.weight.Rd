@@ -38,9 +38,7 @@
 \seealso{
   \code{\link{compute.M.pk}}
 }
-\examples{
 
-}
 \keyword{cluster}
 % docclass is function
 

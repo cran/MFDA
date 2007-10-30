@@ -50,11 +50,6 @@ em.clust(x,clust,mu,zeta,varht,thres,iter.max,alpha)
    A data-driven clustering method for time course gene expression data,  
    Nucleic Acids Research, 34 (4), 1261-1269.
 }
-\seealso{ 
- 
-}
-\examples{
 
-}
 \keyword{cluster}
 % docclass is function

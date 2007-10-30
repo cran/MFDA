@@ -45,8 +45,6 @@ compute.center(x,weight)
 \seealso{
   \code{\link{compute.center}}
 }
-\examples{
 
-}
 \keyword{cluster}
 

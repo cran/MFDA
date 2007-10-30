@@ -47,9 +47,7 @@ Estep.tik(xx.i, old)
 \seealso{
   \code{\link{Estep.tk}}
 }
-\examples{
 
-}
 \keyword{cluster}
 % docclass is function
 

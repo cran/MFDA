@@ -57,16 +57,14 @@ MFclust<-function(data,minG,maxG,nchain=NULL,thres=NULL,iter.max=NULL,my.alpha=N
 Estep.tik=function(xx.i,old){
    temp=ind.p=NULL
    m=length(xx.i)
-   attach(old)
-   nclust=NROW(mu)	
+   nclust=NROW(old$mu)	
    for(k in 1:nclust){
            clust.sigma=matrix(nrow=m,ncol=m)
-           tempvar=10^zeta[k]*varht[k]
-           rho=tempvar/(tempvar+varht[k])
-           clust.sigma=(matrix(rho,m,m)+diag(rep((1-rho),m)))*(tempvar+varht[k]) 
-           temp[k]=pk[k]*dmvnorm(xx.i,mu[k,],clust.sigma)
-   }  	
-   detach(old) 	 
+           tempvar=10^old$zeta[k]*old$varht[k]
+           rho=tempvar/(tempvar+old$varht[k])
+           clust.sigma=(matrix(rho,m,m)+diag(rep((1-rho),m)))*(tempvar+old$varht[k]) 
+           temp[k]=old$pk[k]*dmvnorm(xx.i,old$mu[k,],clust.sigma)
+   }  		 
    t.ik=temp*1000/sum(temp*1000)
    loglike=log(sum(temp))	
    ind.p=which(t.ik==max(t.ik))[1]
@@ -145,12 +143,12 @@ compute.center<-function(x,weight){
 	tt=1:m
 	if(is.null(weight)){		
 		temp.data=data.frame(gi=as.numeric(as.vector(t(x))),tm=rep(tt,ni),my.geneid=as.factor(sort(rep(1:ni,m))))	
-	      my.ran=mkrandom(~1|my.geneid,data=temp.data)
+	      my.ran=mkran(~1|my.geneid,data=temp.data)
 		temp=ssanova(gi~tm, random=my.ran,id.basis=tt,alpha=1,data=temp.data)
 	}else{
 		my.weight=weight%x%rep(1,m)		 	
       	temp.data=data.frame(gi=as.numeric(as.vector(t(x))),tm=rep(tt,ni), my.weight=as.numeric(my.weight), my.geneid=as.factor(sort(rep(1:ni,m)))) 
-  		my.ran=mkrandom(~1|my.geneid,data=temp.data)
+  		my.ran=mkran(~1|my.geneid,data=temp.data)
 		temp=ssanova(gi~tm, random=my.ran,weights=my.weight,id.basis=1:m,alpha=1,data=temp.data)
 	}			
       temp.pred=predict(temp,data.frame(tm=tt))
