@@ -146,12 +146,12 @@ compute.center<-function(x,weight){
 	if(is.null(weight)){		
 		temp.data=data.frame(gi=as.numeric(as.vector(t(x))),tm=rep(tt,ni),my.geneid=as.factor(sort(rep(1:ni,m))))	
 	      my.ran=mkrandom(~1|my.geneid,data=temp.data)
-		temp=ssanova1(gi~tm, random=my.ran,id.basis=tt,alpha=1,ext=0,data=temp.data)
+		temp=ssanova(gi~tm, random=my.ran,id.basis=tt,alpha=1,data=temp.data)
 	}else{
 		my.weight=weight%x%rep(1,m)		 	
       	temp.data=data.frame(gi=as.numeric(as.vector(t(x))),tm=rep(tt,ni), my.weight=as.numeric(my.weight), my.geneid=as.factor(sort(rep(1:ni,m)))) 
   		my.ran=mkrandom(~1|my.geneid,data=temp.data)
-		temp=ssanova1(gi~tm, random=my.ran,weights=my.weight,id.basis=1:m,alpha=1,ext=0,data=temp.data)
+		temp=ssanova(gi~tm, random=my.ran,weights=my.weight,id.basis=1:m,alpha=1,data=temp.data)
 	}			
       temp.pred=predict(temp,data.frame(tm=tt))
       mu=temp.pred
@@ -226,6 +226,6 @@ em.clust=function(x,clust,mu,zeta,varht,thres,iter.max,alpha){
 	old=list(pk=pk,mu=mu,zeta=zeta,varht=varht) 
   }
   rm(old) 	
-  BIC=em.bic(max(loglikelihood),out.trc,n,m)
-  return(list(clust=out.clust,mu=out.mu,BIC=BIC,loglikelihood=max(loglikelihood)))
+  BIC=em.bic(min(loglikelihood),out.trc,n,m)
+  return(list(clust=out.clust,mu=out.mu,BIC=BIC,loglikelihood=min(loglikelihood)))
 }
